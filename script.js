@@ -1,5 +1,7 @@
 "use strict";
 
+// window.addEventListener("DOMContentLoaded", init);
+
 const queueArray = [
   1,
   2,
@@ -40,14 +42,18 @@ const queueArray = [
   7,
   8,
   9,
-  10
+  10,
+  1
 ];
 let randomNumber;
 
 function getRandomNumber() {
   randomNumber = Math.floor(Math.random() * 32) + 1;
 }
-setInterval(generateQueue, 1000);
+function init() {
+  setInterval(generateQueue, 990);
+}
+
 function generateQueue() {
   getRandomNumber();
   let newQueueNumber = randomNumber;
@@ -58,7 +64,7 @@ function generateQueue() {
 }
 
 function changeBars() {
-  for (let i = 0; i < 40; i++) {
+  for (let i = 0; i < 41; i++) {
     const thisBar = document.getElementById(`bar${1 + i}`);
     thisBar.dataset.count = queueArray[i];
     thisBar.style.setProperty("--height", queueArray[i]);

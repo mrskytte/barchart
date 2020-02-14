@@ -18,6 +18,7 @@ body {
   display: flex;
   --height: 32;
   --move: 0;
+  overflow: hidden;
 }
 
 .bar {
@@ -29,6 +30,16 @@ body {
   margin: auto auto 0 auto;
   z-index: 1;
   text-align: center;
+  animation: moveBars 1s linear infinite;
+}
+
+@keyframes moveBars {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-2vw);
+  }
 }
 
 .bar[data-color="high"] {
