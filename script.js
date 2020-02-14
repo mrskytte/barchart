@@ -1,6 +1,6 @@
 "use strict";
 
-// window.addEventListener("DOMContentLoaded", init);
+window.addEventListener("DOMContentLoaded", init);
 
 const queueArray = [
   1,
@@ -51,7 +51,7 @@ function getRandomNumber() {
   randomNumber = Math.floor(Math.random() * 32) + 1;
 }
 function init() {
-  setInterval(generateQueue, 990);
+  generateQueue();
 }
 
 function generateQueue() {
@@ -76,4 +76,7 @@ function changeBars() {
       thisBar.dataset.color = "high";
     }
   }
+  document
+    .querySelector(".bar:first-child")
+    .addEventListener("animationiteration", generateQueue);
 }
