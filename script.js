@@ -45,11 +45,11 @@ const queueArray = [
   10,
   1
 ];
-let randomNumber;
 
 function getRandomNumber() {
-  randomNumber = Math.floor(Math.random() * 32) + 1;
+  return Math.floor(Math.random() * 32) + 1;
 }
+
 function init() {
   generateQueue();
   document
@@ -58,25 +58,36 @@ function init() {
 }
 
 function generateQueue() {
-  getRandomNumber();
-  let newQueueNumber = randomNumber;
+  let newQueueNumber = getRandomNumber();
   console.log(newQueueNumber);
   queueArray.push(newQueueNumber);
   queueArray.shift();
-  changeBars();
+  showBars();
 }
 
-function changeBars() {
+function showBars() {
   for (let i = 0; i < 41; i++) {
     const thisBar = document.getElementById(`bar${1 + i}`);
-    thisBar.dataset.count = queueArray[i];
-    thisBar.style.setProperty("--height", queueArray[i]);
-    if (queueArray[i] < 11) {
-      thisBar.dataset.color = "low";
-    } else if (queueArray[i] < 23) {
-      thisBar.dataset.color = "medium";
-    } else if (queueArray[i] < 33) {
-      thisBar.dataset.color = "high";
-    }
+    changeBarsHeight(thisBar, i);
+    changeBarsColor(thisBar, i);
+    changeBarsHover(thisBar, i);
   }
+}
+
+function changeBarsHeight(thisBar, i) {
+  thisBar.style.setProperty("--height", queueArray[i]);
+}
+
+function changeBarsColor(thisBar, i) {
+  if (queueArray[i] < 11) {
+    thisBar.dataset.color = "low";
+  } else if (queueArray[i] < 23) {
+    thisBar.dataset.color = "medium";
+  } else if (queueArray[i] < 33) {
+    thisBar.dataset.color = "high";
+  }
+}
+
+function changeBarsHover(thisBar, i) {
+  thisBar.dataset.count = queueArray[i];
 }
