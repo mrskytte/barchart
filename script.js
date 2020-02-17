@@ -52,6 +52,9 @@ function getRandomNumber() {
 }
 function init() {
   generateQueue();
+  document
+    .querySelector(".bar:first-child")
+    .addEventListener("animationiteration", generateQueue);
 }
 
 function generateQueue() {
@@ -76,7 +79,4 @@ function changeBars() {
       thisBar.dataset.color = "high";
     }
   }
-  document
-    .querySelector(".bar:first-child")
-    .addEventListener("animationiteration", generateQueue);
 }
